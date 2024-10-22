@@ -21,7 +21,7 @@ function AIRecc() {
 
           // Only call the API if there are events
           if (eventsData.length > 0) {
-            const response = await fetch('http://localhost:5000/generate-ad', {
+            const response = await fetch('https://ecflask.azurewebsites.net/generate-ad', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ events: eventsData })
