@@ -1,0 +1,15 @@
+.home-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0;
+    padding: 0;
+}
+
+.content {
+    width: 100%;
+    text-align: center; /* Center the content for better layout */
+    font-family: Arial, sans-serif; /* Example font */
+    user-select: none;
+}

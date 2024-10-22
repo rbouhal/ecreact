@@ -1,0 +1,252 @@
+.find-events-page {
+  padding: 20px;
+}
+
+.find-events-page h1 {
+  font-family: 'Swiss-721';
+}
+
+h1, h2, h3, a {
+  color: #DB6948;
+}
+
+p {
+ color: #333
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.location{
+  text-transform: capitalize;
+}
+
+.event-item {
+  position: relative;
+  background-color: white;
+  color: #DB6948;
+  padding: 55px;
+  border-radius: 10px;
+  align-items: center;
+  transition: transform 0.4s ease; 
+  width: 700px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.589);
+  border: #DB6948 1px solid;
+  display: flex; 
+  flex-direction: row;
+  margin: 15px auto;
+
+}
+.event-item:hover {
+  transform: translate(10px, -10px);
+}
+
+.event-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px; /* Add space between the image and the event details */
+  border-radius: 5px; /* Optional: Slightly rounded corners for the image */
+}
+
+.event-details {
+  flex: 1; /* Allow the event details to take up remaining space next to the image */
+}
+
+.event-item h2 {
+  margin: 0 0 10px;
+}
+
+.event-item p {
+  margin: 5px 0;
+}
+
+.event-item a {
+  text-decoration: none;
+}
+
+.event-item a:hover {
+  text-decoration: underline;
+}
+
+.search-filters{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: #DB6948;
+  padding: 12px 24px;
+  border-radius: 20px;
+color: white;
+}
+
+input, .radius input{
+  margin-left: 10px;
+}
+
+input, button {
+  border-radius: 20px;
+  padding: 2px 12px;
+  border: 1px solid #ccc; 
+}
+
+.radius {
+  display: inline-flex; /* Make the label an inline flex container */
+  align-items: center; /* Vertically align items */
+}
+
+.radius select {
+  border-radius: 0 20px 20px 0; 
+  border: 1px solid #ccc; 
+  padding: 4.2px 0; 
+  border-left: none;
+}
+
+.radius input {
+  border-radius: 20px 0 0 20px; 
+  border: 1px solid #ccc; 
+  padding: 5px 0;
+
+  border-right: none; 
+  max-width: 90px;
+  text-align: center;
+}
+
+button{
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  gap: 10px;
+}
+.add-event-button {
+  background-color: #DB6948;
+  border: 2px solid #DB6948;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  position: absolute;
+  bottom: 20px; /* Adjust distance from the bottom */
+  right: 20px;  /* Adjust distance from the right */
+  cursor: pointer;
+  transition: all 0.3s ease;  /* Smooth transition */
+}
+
+.add-event-button.selected {
+  background-color: white;
+  color: #DB6948;
+}
+
+.col{
+  display: flex;
+  flex-direction: column;
+}
+.button-row {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 20px; /* Space between the buttons */
+  margin-bottom: 20px;
+}
+
+.clear {
+  margin-top: 5px;;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: #DB6948 1px solid;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear svg, .search-button svg{
+  width: 20px;
+  height: 20px;
+}
+
+.tooltip-text {
+  font-family: 'Swiss-721';
+  visibility: hidden;
+  width: 160px;
+  background-color: #DB6948;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px 0px;
+  position: absolute;
+  z-index: 1;
+  bottom: 40%; /* Position the tooltip above the button */
+  left: 105%;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip-wrapper:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.more-results-button {
+  border: 2px solid #DB6948; /* Add border to make it more visible */
+  font-family: 'Swiss-721';
+  margin:  30px auto; /* centers the button horizontally */
+  padding: 10px 20px;
+  background-color: #DB6948;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+}
+
+.more-results-button:hover {
+  background-color: white; /* Inverted color on hover */
+  color: #DB6948; /* Text color changes to orange */
+}
+
+.fab-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 120px; 
+  height: 120px; 
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  text-align: center;
+  font-size: 22px;  
+  font-family: 'Swiss-721';
+}
+
+.fab-button:hover {
+ color: #DB6948;
+}
+
+.fab-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.robot-icon {
+  margin-bottom: 5px; /* Adds spacing between icon and text */
+}
+
+.fab-button span {
+  font-size: 12px;  /* Adjusted font size */
+}
+
+.search-button{
+  padding: 8px 24px;
+  border: none;
+  background-color: #333;
+  color: white;
+}

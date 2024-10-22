@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Swiss-721';
+  src: url('../public/fonts/Swiss721Black.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Swiss-721-Bold';
+  src: url('../public/fonts/Swiss721Bold.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body, html {
+  font-family: 'Swiss-721', 'Swiss-721-Bold', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #F3F3F3;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+

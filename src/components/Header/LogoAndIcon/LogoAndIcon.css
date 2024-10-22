@@ -1,0 +1,18 @@
+.nav-logo-and-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-icon {
+    width: 50px;
+    height: auto;
+  }
+  
+  .nav-logo {
+    font-family: 'Swiss-721';
+    font-size: 2em;
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  

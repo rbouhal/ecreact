@@ -1,0 +1,23 @@
+.header {
+  background-color: #363636;
+  color: rgb(255, 255, 255);
+  padding: 10px 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  user-select: none;
+}
+
+.user-icon {
+  width: 35px;
+  height: 45px;
+}
+
+.user-icon:hover {
+  color: #DB6948;
+  transition: background-color 0.3s ease;
+}

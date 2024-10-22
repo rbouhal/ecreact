@@ -1,0 +1,16 @@
+.hamburger {
+    display: none;
+    font-size: 2em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 979px) {
+    .hamburger {
+      display: block;
+      z-index: 10; /* Ensure it's clickable */
+    }
+  }
+  
