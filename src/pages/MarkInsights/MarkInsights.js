@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Calendar from 'react-calendar'
@@ -7,6 +8,46 @@ import './/MarkInsights.css'
 import { useMemo } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
+
+function predictPrices(events, averageRate, days) {
+  const transitionProbabilities = {
+    Low: { Low: 0.7, Medium: 0.2, High: 0.1 },
+    Medium: { Low: 0.3, Medium: 0.5, High: 0.2 },
+    High: { Low: 0.1, Medium: 0.3, High: 0.6 },
+  };
+
+  const rewards = {
+    Low: 1.1,
+    Medium: 1.2,
+    High: 1.3,
+  };
+
+  const pricingGrid = [];
+  let currentState = "Medium";
+
+  for (let i = 0; i < days; i++) {
+    const randomValue = Math.random();
+    let cumulativeProbability = 0;
+    for (const state in transitionProbabilities[currentState]) {
+      cumulativeProbability += transitionProbabilities[currentState][state];
+      if (randomValue <= cumulativeProbability) {
+        currentState = state;
+        break;
+      }
+    }
+
+    const eventImpact = events.length > 0 ? 1 + (events.length / 10) : 1;
+    const predictedPrice = averageRate * rewards[currentState] * eventImpact;
+
+    pricingGrid.push({
+      day: i + 1,
+      state: currentState,
+      price: predictedPrice,
+    });
+  }
+
+  return pricingGrid;
+}
 
 
 function calculatePriceIncrease(events, occupancy, averageRate) {
@@ -82,8 +123,8 @@ function getRandomInt(max) {
 }
 
 
-function Sidebar({ selectedDate, events, onClose, rate, occupancy }) {
-  
+function Sidebar({ selectedDate, events, onClose, rate, occupancy, pricingGrid }) {
+
   // Handle the case where 'events' is not defined
   if (!events) {
     return <p>No events data available</p>;
@@ -144,6 +185,26 @@ function Sidebar({ selectedDate, events, onClose, rate, occupancy }) {
                   <Bar dataKey="price" fill="#DB6948" />
                 </BarChart>
               </ResponsiveContainer>
+              <h2>Predicted Prices</h2>
+              <table className="predicted-prices-table">
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Price</th>
+                    <th>Occupancy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {pricingGrid.map((entry, index) => (
+                    <tr key={index}>
+                      <td>Day {entry.day}</td>
+                      <td>${entry.price.toFixed(2)}</td>
+                      <td>{entry.state} occupancy</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
             </div>
           ) : (
             <p>Enter an average price and local occupancy to see analysis.</p>
@@ -169,6 +230,8 @@ function MarkInsights() {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [rate, setRate] = useState(-1);
   const [occupancy, setOccupancy] = useState("Select an option")
+  const pricingGrid = useMemo(() => predictPrices(eventsList, rate, 31), [eventsList, rate]);
+
 
   useEffect(() => {
     const locationParam = params.get('location'); // Extract the location parameter into a variable
@@ -288,6 +351,7 @@ function MarkInsights() {
           onClose={closeSidebar}
           rate={rate}
           occupancy={occupancy}
+          pricingGrid={pricingGrid}
         />
       </div>
     </div>
